@@ -154,6 +154,8 @@ JavaScript的数据类型分为两大种：
 
 ### Object.prototype.toString
 
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)
+
  `Object.protototype.toString` 被调用时，执行下面的操作步骤：
 
 1. 如果 `this` 的值为 `undefined`，则返回 "[`object Undefined`]" .
@@ -164,7 +166,7 @@ JavaScript的数据类型分为两大种：
 
 通过规范，了解调用 `Object.prototype.toString` 最终会返回一个由 `"[object "` 和 `class` 和 `"]"` 组成的字符串，而 `class` 是要判断的对象的内部属性。
 
-
+> 为了每个对象都能通过 `Object.prototype.toString()` 来检测，需要以 `Function.prototype.call()` 或者 `Function.prototype.apply()` 的形式来调用，传递要检查的对象作为第一个参数，称为`thisArg`。
 
 ```js
 console.log(Object.prototype.toString.call(3)) // [object Number]
@@ -330,39 +332,51 @@ console.log(obj instanceof Animal); //true 可以理解
 
 ### 总结
 
-**typeof：**
+- **typeof：**
 
-- 可以识别基本数据类型（ `Null` 除外）
-- 不可识别具体的对象类型（ `Function` 除外）
+    > - 识别所有变量的类型，返回number，boolean，string，undefined，function，object（ `Null` 除外）
+    > - 对于内置的对象实例，只能返回"Object"字符串
 
-**Object.prototype.toString：**
 
-- 可以识别基本数据类型及内置对象类型（例如，`Object`, `Date`, `Array` ）
-- 不能识别自定义对象类型
+- **Object.prototype.toString：**
 
-**constructor：**
+  > - 获取每个对象的类型，可以识别基本数据类型及内置对象类型
+  > - 不能识别自定义对象类型
 
-- 可以判别部分基本数据类型（ `Undefined`/`Null` 除外）
-- 可识别内置对象类型
-- 可识别自定义对象类型（无法判断原型链改变的情况）
+- **instanceof：**
 
-**instanceof：**
+  > - 判断对象的实例，返回布尔值
+  > - 不可判别基本数据类型
+  > - 可判别内置对象类型
+  > - 可判别自定义对象类型（可以判断原型链改变的情况）
 
-- 不可判别基本数据类型
-- 可判别内置对象类型
-- 可判别自定义对象类型（可以判断原型链改变的情况）
+- **constructor：**
+
+  > - 返回创建实例对象的 [`Object`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object) 构造函数的引用。
+  > - 可以判别部分基本数据类型（ `Undefined`/`Null` 除外）
+  > - 可识别内置对象类型
+  > - 可识别自定义对象类型（无法判断原型链改变的情况）
+
+
+#### typeof和instanceof的区别
+
+- `typeof` 识别所有变量的类型，返回值有number，boolean，string，undefined，function，object（不能判断null）
+
+- `typeof` 对于丰富的对象实例，只能返回"Object"字符串。
+
+- `instanceof` 用来判断对象，代码形式为 `obj1 instanceof obj2`（obj1是否是obj2的实例），其返回值为布尔值。obj2必须为对象，否则会报错！（所以不可以判别基本数据类型）。
+
+- `instanceof` 可以对不同的对象实例进行判断，判断方法是根据对象的原型链依次向下查询，如果obj2的原型属性存在obj1的原型链上，（obj1 instanceof obj2）值为true。
+
+
 
 
 
 ### 综合使用
 
-#### 需要返回boolean值
+- `typeof` 判别基本数据类型（null除外）结合 `instanceof` 判别内置对象类型
 
-`typeof` 判别基本数据类型（null除外）结合 `instanceof` 判别内置对象类型
-
-#### 需要知道具体的类型
-
-`Object.prototype.toString`
+- `Object.prototype.toString` 结合类库
 
 
 
