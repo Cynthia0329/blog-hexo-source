@@ -1,0 +1,81 @@
+---
+title: vue中使用字体图标
+author: Cynthia
+categories:
+  - Vue
+date: 2019-01-25 13:15:36
+tags:
+---
+
+🐰
+
+<!--more-->
+
+## font-awesome
+
+### 使用类的方式
+
+- npm 安装 `font-awesome`
+
+  ```shell
+  npm install font-awesome
+  ```
+
+- 在 `main.js` 中引入
+
+  ```js
+  import '@/assets/css/font-awesome.css' // 引入font-awesome字体图标
+  ```
+
+- 在组件中通过类名的方式引用
+
+  ```html
+  <span class="fa fa-camera-retro fa-lg"></span>
+  ```
+
+### 使用组件的方式
+
+- 安装 `vue-awesome` 依赖包
+
+  ```shell
+  $ npm install vue-awesome
+  ```
+
+  > 注意：安装之后打开node_modules文件夹，查看是否有vue-awesome文件夹
+
+- 在 main.js 文件下
+
+  ```js
+  // 如果考虑项目大小，只导入使用的图标，减少包大小
+  import 'vue-awesome/icons/flag'
+  
+  // 否则，全部导入
+  import 'vue-awesome/icons'
+  
+  // 注册组件
+  import Icon from 'vue-awesome/components/Icon'
+  Vue.component('icon', Icon)
+  ```
+
+- 在组件中使用
+
+  ```html
+  <icon name="beer"></icon>
+  ```
+
+  ![](https://raw.githubusercontent.com/chen1440731632/images/master/img/20190422155108.png)
+
+
+
+
+
+## iconfont
+
+- <https://www.jianshu.com/p/0cf10d836991>
+- [vue项目中使用阿里iconfont图标](https://www.baidu.com/s?ie=UTF-8&wd=vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8Ciconfont%E5%9B%BE%E6%A0%87)
+
+
+
+## iconmoon
+
+[vue项目中使用iconMoon图标](https://www.cnblogs.com/chinabin1993/p/8185398.html)

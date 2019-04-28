@@ -1,0 +1,210 @@
+// Custom styles.
+// //背景图片
+// body{
+//         background:url(https://b-ssl.duitang.com/uploads/item/201507/28/20150728200556_inrvH.jpeg);
+//         background-size:cover;
+//         background-repeat:no-repeat;
+//         background-attachment:fixed;
+//         background-position:center;
+// }
+// //顶栏图片
+// .header {
+//           background:rgba(255,255,255,0.7)  none repeat scroll !important;
+// }
+// //底栏背景色
+// .footer {
+//           background:rgba(255,255,255,0.9) none repeat scroll !important;
+// }
+// //侧栏图片及内部文字颜色修改
+// #sidebar {
+//             background:url(图片链接);
+//             background-size: cover;
+//             background-position:center;
+//             background-repeat:no-repeat;
+//             p,span,a {color: 颜色代码;}
+// }
+
+// 主页文章添加阴影效果
+.post {
+   padding: 25px;
+   background:rgba(255,255,255,0.9) none repeat scroll !important;
+   -webkit-box-shadow: 0 0 15px rgba(202, 203, 203, .5);
+   -moz-box-shadow: 0 0 15px rgba(202, 203, 204, .5);
+}
+
+//侧边栏置于左侧
+.sidebar {
+  left: 0;
+}
+// //侧栏开关置于左侧
+// .sidebar-toggle {
+//   left: $b2t-position-right;
+// }
+
+// 代码块的样式
+// code {
+//     color: #ff7600;
+//     background: #fbf7f8;
+//     margin: 2px;
+// }
+
+// 大代码块的自定义样式
+.highlight {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #8080808a;
+}
+// .highlight, code, pre {
+//     border: 1px solid #d6d6d6;
+// }
+
+// 隐藏代码块的滚动条
+// .table-container {
+//   overflow hidden;
+// }
+// .table-container:hover {
+//   overflow auto;
+// }
+
+//行内代码样式
+code {
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid #d6d6d6;
+    padding:1px 4px;
+    word-break: break-all;
+    border-radius:4px;
+}
+
+// 文章内链接文本样式
+.post-body a{
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+  &:hover {
+    color: #fc6423;
+    border-bottom: none;
+    border-bottom: 1px solid #fc6423;
+  }
+}
+
+// ⭐ 给标题自动添加序号
+h2:before
+{
+  /*内容显示为：计数器h2counter的值转换为中文数字格式+顿号，格式：一、*/
+  // content: counter(h2counter, cjk-ideographic) '\3001';
+}
+h2
+{
+  /*重置计数器h3counter的值*/
+  counter-reset: h3counter;
+  /*计数器h2counter的值增加1*/
+  counter-increment: h2counter;
+  font-size: 28px;
+  color: #355e82;
+}
+
+h3:before
+{
+  /*内容显示为：计数器h2counter的值+点+计数器h3counter的值，格式：1.1*/
+  content: counter(h2counter) "." counter(h3counter) " ";
+}
+h3
+{
+  /*计数器h3counter的值增加1*/
+  counter-increment: h3counter;
+  /*重置计数器h4counter的值*/
+  counter-reset: h4counter;
+}
+
+h4:before
+{
+  /*内容显示为：计数器h2counter的值+点+计数器h3counter的值，格式：1.1*/
+  content: "(" counter(h4counter) ") ";
+}
+h4
+{
+  /*计数器h4counter的值增加1*/
+  counter-increment: h4counter;
+}
+
+// ⭐给标题 h2和h3添加下划线
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+    margin-top: 50px;
+}
+
+// 修改标题样式
+h3 {
+  position relative;
+  font-size: 22px;
+}
+h3:after {
+    position: absolute;
+    content: "";
+    top: 10px;
+    left: -25px;
+    width: 3px;
+    height: 30px;
+    background-color: #d80a0aa1;
+}
+
+// 间距
+p {
+    margin: 15px 0 15px 0;
+}
+h4 {
+    margin: 30px 0 20px 0;
+}
+
+
+
+// 自定义水平线样式
+hr {
+    margin: 50px 0 0 0;
+    height: 1px;
+}
+
+// 表格边框样式重置
+th, td {
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;  // 修改了底边框的粗细
+}
+
+// 引用样式重置
+blockquote {
+    padding: 3px 50px 3px 30px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background-color: #f7f7f7;
+    border-left: 6px solid #b4b4b4;
+    word-break: break-word !important;
+    word-break: break-all;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+
+// 归档页的样式
+.post-block.archives_title .post {
+  padding: 0;
+  box-shadow: 0 0 0;
+  }
+.post-block.archives_title h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+
+  }
