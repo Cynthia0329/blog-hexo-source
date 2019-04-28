@@ -1,5 +1,5 @@
 ---
-title: 用hexo写博客：样式美化
+title: 用hexo写博客：相关标签和美化
 author: Cynthia
 categories:
   - hexo博客
@@ -10,7 +10,7 @@ tags:
 基于hexo + next6.0
 
 <!-- more -->
-## 主题原生支持的样式
+## 主题原生支持
 
 <span id="jump"></span>
 
@@ -49,6 +49,18 @@ tags:
     {% endcq %}
 ```
 </details>
+
+
+### 引用站内文章
+
+{% post_link 【记录和总结】/2019-04 Cynthia-的四月记录 %}
+
+```
+{% post_link 【记录和总结】/2019-04 Cynthia-的四月记录 %}
+```
+
+
+
 
 
 ## 利用html标签
