@@ -129,13 +129,7 @@ h4
   counter-increment: h4counter;
 }
 
-// ⭐给标题 h2和h3添加下划线
-h1 {
-    padding-bottom: .3em;
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
+// ⭐给标题 h2添加下划线
 h2 {
     padding-bottom: .3em;
     font-size: 1.75em;
@@ -222,4 +216,47 @@ summary {
     padding: 1.6em;
     margin: -1.6em;
     outline: none;
+}
+
+// 目录结构
+// ⭐ 给标题自动添加序号
+.nav-level-2:before
+{
+  /*内容显示为：计数器h2counter的值转换为中文数字格式+顿号，格式：一、*/
+  // content: counter(h2counter, cjk-ideographic) '\3001';
+  content: counter(h2counter) ". ";
+}
+.nav-level-2
+{
+  /*重置计数器h3counter的值*/
+  counter-reset: h3counter;
+  /*计数器h2counter的值增加1*/
+  counter-increment: h2counter;
+}
+
+.nav-level-3:before
+{
+  /*内容显示为：计数器h2counter的值+点+计数器h3counter的值，格式：1.1*/
+  content: counter(h2counter) "." counter(h3counter) " ";
+}
+.nav-level-3
+{
+  /*计数器h3counter的值增加1*/
+  counter-increment: h3counter;
+  /*重置计数器h4counter的值*/
+  counter-reset: h4counter;
+}
+
+.nav-level-4:before
+{
+  /*内容显示为：计数器h2counter的值+点+计数器h3counter的值，格式：1.1*/
+  content: "🔹";
+  font-size: 5px !important;
+  width: 1px;
+  padding-right: 5px;
+}
+.nav-level-4
+{
+  /*计数器h4counter的值增加1*/
+  counter-increment: h4counter;
 }

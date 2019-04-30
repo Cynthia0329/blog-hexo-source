@@ -2,7 +2,7 @@
 title: Vue组件相关知识点和注意点（持续更新）
 author: Cynthia
 categories:
-  - null
+  - Vue
 tags: []
 date: 2019-04-29 13:50:01
 ---
@@ -20,3 +20,14 @@ date: 2019-04-29 13:50:01
 ### 异步组件【待】
 
 难点（待）
+
+
+
+## 未分类
+
+### 组件中this和$el的指向
+
+<https://www.cnblogs.com/mengfangui/p/9722565.html>
+
+- `this` 指向组件的实例。
+- `$el` 指向当前组件的DOM元素。

@@ -2,7 +2,7 @@
 title: Vue中的DOM操作相关知识点和方法总结（持续更新）
 author: Cynthia
 categories:
-  - null
+  - Vue
 tags: []
 date: 2019-04-29 09:16:43
 ---

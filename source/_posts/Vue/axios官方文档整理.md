@@ -2,7 +2,7 @@
 title: axios官方文档整理
 author: Cynthia
 categories:
-  - null
+  - Vue
 tags: []
 date: 2019-04-29 16:28:58
 ---

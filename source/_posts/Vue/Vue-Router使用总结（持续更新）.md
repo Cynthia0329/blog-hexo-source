@@ -1,5 +1,5 @@
 ---
-title: Vue 路由使用总结（持续更新）
+title: Vue-Router使用总结（持续更新）
 author: Cynthia
 categories:
   - Vue
