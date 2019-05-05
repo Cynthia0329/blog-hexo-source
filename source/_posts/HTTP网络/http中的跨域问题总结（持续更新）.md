@@ -15,6 +15,7 @@ date: 2019-04-30 11:02:08
 
 - [不要再问我跨域的问题了](https://segmentfault.com/a/1190000015597029)
 - [前端常见跨域解决方案（全）](https://segmentfault.com/a/1190000011145364)
+- [跨域总结](https://segmentfault.com/a/1190000018668190#articleHeader27)
 
 
 
@@ -57,7 +58,7 @@ date: 2019-04-30 11:02:08
 
 ### 总结
 
-| 开发环境 | 生成环境 |
+| 开发环境 | 生产环境 |
 | :------- | :------- |
 | cors     | cors     |
 | proxy    | nginx    |

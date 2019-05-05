@@ -3,8 +3,9 @@ title: Vuex 笔记（持续更新）
 author: Cynthia
 categories:
   - Vue
+  - 文档总结
 tags: []
-date: 2019-04-28 11:19:09
+date: 2018-11-15 11:19:09
 ---
 
 通读官方文档和平时使用的总结和注意点

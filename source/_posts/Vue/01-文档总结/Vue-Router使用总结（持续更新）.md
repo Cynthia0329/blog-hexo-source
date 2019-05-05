@@ -3,7 +3,8 @@ title: Vue-Router使用总结（持续更新）
 author: Cynthia
 categories:
   - Vue
-date: 2019-04-26 11:32:28
+  - 文档总结
+date: 2018-10-10 11:32:28
 tags:
 ---
 

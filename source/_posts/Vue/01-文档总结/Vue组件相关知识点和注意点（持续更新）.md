@@ -3,8 +3,9 @@ title: Vue组件相关知识点和注意点（持续更新）
 author: Cynthia
 categories:
   - Vue
+  - 文档总结
 tags: []
-date: 2019-04-29 13:50:01
+date: 2018-11-05 13:50:01
 ---
 ...
 <!--more-->

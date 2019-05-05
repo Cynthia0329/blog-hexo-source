@@ -3,6 +3,7 @@ title: 用Vue写后台：学习和使用笔记
 author: Cynthia
 categories:
   - Vue
+  - 进阶
 tags: []
 date: 2019-04-29 09:43:12
 ---
@@ -105,8 +106,10 @@ if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完u
 
 **该教程中权限的实现方式：**
 
-- 获取当前用户权限对比路由表=>生成当前用户具有的权限可访问的路由表
-- 通过 `router.addRoutes` 动态挂在到router上
+- 创建vue实例的时候将 `vue-router` 挂载，但这个时候 `vue-router` 挂载一些登录或者不用权限的公用的页面
+- 当用户登录后，获取用户 `role`，将 `role` 和路由表每个页面的需要的权限作比较，生成最终用户可访问的路由表
+- 调用 `router.addRoutes` ( `store.getters.addRouters` )添加用户可访问的路由（动态挂载路由）
+- 使用`vuex` 管理路由表，根据 `vuex` 中可访问的路由渲染侧边栏组件
 
 
 
