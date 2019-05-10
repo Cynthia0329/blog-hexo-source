@@ -2,7 +2,7 @@
 title: JS异步函数
 author: Cynthia
 categories:
-  - null
+  - JavaScript
 tags: []
 date: 2019-05-06 09:35:09
 ---

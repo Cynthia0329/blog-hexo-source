@@ -20,5 +20,13 @@ date: 2019-05-05 14:43:30
 
 
 
+**初始化时执行watch中的方法**
 
+[详情](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader11)
+
+
+
+**性能优化小技巧**
+
+能用`v-show`的地方就不要用`v-if`，善用`keep-alive`和`v-once`，`Object.freeze()`处理 [vue big data](https://github.com/vuejs/vue/issues/4384) 问题等
 

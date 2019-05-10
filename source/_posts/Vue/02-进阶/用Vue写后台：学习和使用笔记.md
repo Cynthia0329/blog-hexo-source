@@ -4,7 +4,7 @@ author: Cynthia
 categories:
   - Vue
   - 进阶
-tags: []
+tags: [待整理,待复习]
 date: 2019-04-29 09:43:12
 ---
 ...
@@ -15,7 +15,9 @@ date: 2019-04-29 09:43:12
 >
 > <https://segmentfault.com/a/1190000009275424>
 
-## 书签
+## 看我😄
+
+> 此文档总结了很多教程学习过程中：不熟甚至是还未看的知识点，所以请多次查阅，查漏补缺和整理
 
 ### 进度
 
@@ -264,6 +266,129 @@ if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完u
 [为什么要使用babel-polyfill？](https://www.jianshu.com/p/4822852792d1)
 
 [本项目相关使用教程](https://segmentfault.com/a/1190000010043013#articleHeader8)
+
+
+
+
+
+
+
+## v4.0新版本
+
+> [手摸手，带你用vue撸后台 系列五(v4.0新版本)](https://segmentfault.com/a/1190000019122005?_ea=10839074)
+
+
+
+### redirect 刷新页面
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader3)
+
+在不刷新页面的情况下，更新页面。
+
+
+
+### 删除动态添加的路由
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader4)
+
+
+
+
+
+### mock方法优化
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader5)
+
+
+
+### Attrs 和 Listeners
+
+>  写二次封装组件或高阶组件的神器
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader12)
+
+
+
+### Computed 的 get 和 set
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader14)
+
+
+
+### Object.freeze
+
+> 优化当数据量特别大的时候的卡顿现象
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader15)
+
+
+
+### Sass 和 Js 之间变量共享
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader18)
+
+**JS将变量传给sass：**
+
+使用内联样式（此处只列出了最优方法，其余方法原教程）
+
+```html
+<div :style="{'background-color':color}" ></div>
+```
+
+**sass将变量传给JS**
+
+利用`:export` 实现
+
+```scss
+// var.scss
+$theme: blue;
+
+:export {
+  theme: $theme;
+}
+```
+
+```js
+// test.js
+import variables from '@/styles/var.scss'
+console.log(variables.theme) // blue
+```
+
+
+
+### 自动注册全局组件
+
+> 适用场景：当自己封装了很多组件的时候（并且 在很多页面组件中都需要用到），每次使用都需要导入，太麻烦
+
+[本教程原地址](https://segmentfault.com/a/1190000019122005?_ea=10839074#articleHeader19)
+
+
+
+
+
+本教程原地址
+
+本教程原地址
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

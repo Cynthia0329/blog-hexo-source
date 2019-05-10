@@ -14,6 +14,11 @@ date: 2018-10-29 09:16:43
 
 ## 未分类
 
+### dom操作建议
+
+我们现在虽然用 vue 写代码了，核心思想转变为用数据驱动 `view`，不用像`jQuery`时代那样，频繁的操作 DOM 节点。但还是免不了有些场景还是要操作 DOM 的。
+我们在组件内选择节点的时候一定要切记避免使用 `document.querySelector()`等一系列的全局选择器。你应该使用`this.$el`或者`this.refs.xxx.$el`的方式来选择 DOM。这样就能将你的操作局限在当前的组件内，能避免很多问题。
+
 ### nextTick
 
 [官方API文档](https://cn.vuejs.org/v2/api/#Vue-nextTick)
