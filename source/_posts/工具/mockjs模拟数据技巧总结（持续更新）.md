@@ -2,6 +2,7 @@
 title: mockjs模拟数据技巧总结（持续更新）
 author: Cynthia
 categories:
+  - 工具
   - 前端工具
 tags: []
 date: 2019-04-30 11:15:47
