@@ -36,3 +36,6 @@
 {% block sidebar %}
   {{ sidebar_template.render(false) }}
 {% endblock %}
+
+<!-- 引入自定义js文件，实现分类折叠效果 -->
+<script type="text/javascript" src="/js/src/category.js"></script>

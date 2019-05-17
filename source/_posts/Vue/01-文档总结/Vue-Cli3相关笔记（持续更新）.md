@@ -4,6 +4,8 @@ author: Cynthia
 categories:
   - Vue
   - 文档总结
+  - 测试
+
 date: 2018-12-05 13:15:36
 tags:
 ---
