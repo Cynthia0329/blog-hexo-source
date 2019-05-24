@@ -2,9 +2,8 @@
 title: axios官方文档整理
 author: Cynthia
 categories:
-  - Vue
-  - 第三方工具
-tags: []
+  - HTTP网络
+tags: [http]
 date: 2019-04-29 16:28:58
 ---
 官方文档没有什么目录结构，整理了下，方便学习和后续查看（版本为20190429）
@@ -248,6 +247,7 @@ axios('/user/12345');
   timeout: 1000,
 
   // `withCredentials` 表示跨域请求时是否需要使用凭证
+  // axios的访问请求默认是不带cookie的，因此想要带cookie的请求，需要设置该参数为true
   withCredentials: false, // 默认的
 
   // `adapter` 允许自定义处理请求，以使测试更轻松

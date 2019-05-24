@@ -1,5 +1,4 @@
 
-
 > [*Redis* 教程 | 菜鸟教程](https://www.baidu.com/link?url=mfjBnlAdpWaZpQu8ivFESGlZQlvseHm8wzQSi78HpEOIf3vsbslikG0lLbCozI3q7BBtR2xWEr9_KDMpaVVEsa&wd=&eqid=8ef19cf6000ee8d0000000065cb6e9ed)
 
 ## 起步
