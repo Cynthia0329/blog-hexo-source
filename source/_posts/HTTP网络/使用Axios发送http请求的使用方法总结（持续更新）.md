@@ -82,6 +82,31 @@ title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
 
 ### multipart/form-data
 
+> 这又是一个常见的 POST 数据提交的方式。
+>
+> 我们使用表单上传文件时，必须让 form 的 enctyped 等于这个值 （当然也可以直接传递参数）
+
+```js
+var fd = new formData()	// 创建form对象
+fd.append('file',file)	// 通过append向form对象添加数据
+
+axios.post('/user', fd, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    }
+})
+  .then(res => {
+    _this.msg = res.data
+  }, err => {
+    console.log(err)
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+```
+
+
+
 
 
 
@@ -129,6 +154,43 @@ form的enctype属性为编码方式，常用有两种：
 - 默认为application/x-www-form-urlencoded
 
 
+
+
+
+## 实用demo
+
+### 下载文件
+
+```js
+// 电子书下载调用的api
+export function download(book, onSucess, onError, onProgress) {
+  // 如果只传入三个参数
+  if (onProgress == null) {
+    onProgress = onError
+    onError = null
+  }
+  // 可以使用自定义配置新建一个 axios 实例
+  // axios.create([config])
+  return axios.create({
+    baseURL: process.env.VUE_APP_EPUB_URL,
+    method: 'get',
+    responseType: 'blob', // 下载电子书是一个blob对象，这里定义了可以省去我们自己转换blob对象
+    timeout: 180 * 1000, // 超时时间
+    onDownloadProgress: progressEvent => { // 如果第4个参数onProgress存在，则返回progressEvent
+      if (onProgress) onProgress(progressEvent)
+    }
+  }).get(`${book.categoryText}/${book.fileName}.epub`)
+    .then(res => {
+      // 将获取到的图书blob格式的文件保存到 indexDB 中（key值为书名）
+      const blob = new Blob([res.data])
+      setLocalForage(book.fileName, blob,
+        () => onSucess(book), // 保存成功，则将图书
+        err => onError(err)) // 保存失败，则将错误信息传递给第三个参数onError
+    }).catch(err => { // 出现异常，则将错误信息传递给第三个参数onError
+      if (onError) onError(err)
+    })
+}
+```
 
 
 

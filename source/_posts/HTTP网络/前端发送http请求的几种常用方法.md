@@ -35,6 +35,20 @@ date: 2019-05-24 17:07:12
 
 
 
+## form
+
+> 最原始的一种http请求的方式
+
+```html
+<FORM method="post" action="http://w.sohu.com" >
+    <INPUT type="text" name="txt1">
+    <INPUT type="text" name="txt2">
+    <INPUT type="submit" value="提交">
+ </FORM>
+```
+
+
+
 
 
 ## Ajax
