@@ -1,3 +1,10 @@
-import axios from 'axios'
-import qs from 'qs'
+var test = document.getElementById('test');
 
+function stopDefault(e) {
+  
+}
+
+
+test.onclick = function (e) {
+  stopDefault(e);
+}

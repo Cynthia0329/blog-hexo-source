@@ -61,6 +61,73 @@ import './utils/vee-validate.js'
 先展示一个全部代码的示例
 
 ```js
+import Vue from 'vue'
+import VeeValidate, { Validator } from 'vee-validate'
+import zh_CN from 'vee-validate/dist/locale/zh_CN'	// 支持中文错误提示的文件
+import VueI18n from 'vue-i18n'	// i18n国际化
+import { byteSize, checkTel, CheckPassWord } from './validate.js'	// 验证规则
+
+Vue.use(VueI18n)	// 使用i18n国际化
+
+const i18n = new VueI18n({
+  locale: 'zh_CN'
+})
+
+// 配置中文错误提示
+Vue.use(VeeValidate, {
+  i18n,
+  i18nRootKey: 'validation',
+  dictionary: {
+    zh_CN
+  }
+})
+
+// 自定义验证规则
+function customMethod() {
+  Validator.extend('mobile', {
+    getMessage: () => '请输入正确的固话或者手机号码',
+    validate: value => checkTel(value)
+  })
+  Validator.extend('company', {
+    getMessage: () => '请输入50字节以内的公司名称',
+    validate: value => byteSize(value, 50)
+  })
+  Validator.extend('department', {
+    getMessage: () => '请输入20字节以内的部门名称',
+    validate: value => byteSize(value, 20)
+  })
+  Validator.extend('password', {
+    getMessage: value => value + '需要由字母和数字组成',
+    validate: value => CheckPassWord(value)
+  })
+  Validator.extend('psw', {
+    getMessage: () => '密码由字母和数字组成，固定6位',
+    validate: value => {
+      if (value === null || value.length !== 6) {
+        return false
+      }
+      CheckPassWord(value)
+      return true
+    }
+  })
+}
+customMethod()
+
+// 自定义validate
+const Dictionary = {
+  zh_CN: {
+    messages: {
+      required: field => '请输入' + field
+    },
+    attributes: {
+      userName: '用户名',
+      companyName: '公司名称'
+    }
+  }
+}
+// 自定义validate error 信息
+Validator.localize(Dictionary)
+
 
 ```
 
@@ -82,19 +149,20 @@ import VueI18n from 'vue-i18n';	// i18n国际化
 #### 配置中文版错误提示
 
 ```js
-// 使用i18n国际化
-Vue.use(VueI18n)	
+Vue.use(VueI18n)	// 使用i18n国际化
+
 const i18n = new VueI18n({
-  locale: 'zh_CN',
+  locale: 'zh_CN'
 })
 
+// 配置中文错误提示
 Vue.use(VeeValidate, {
   i18n,
   i18nRootKey: 'validation',
   dictionary: {
     zh_CN
   }
-});
+})
 ```
 
 
@@ -117,16 +185,16 @@ Vue.use(VeeValidate, {
 const Dictionary = {
   zh_CN: {
     messages: {
-      required: field => "请输入" + field
+      required: field => '请输入' + field
     },
     attributes: {
-      name: "账号"
+      userName: '用户名',
+      companyName: '公司名称'
     }
   }
-};
-
+}
 // 自定义validate error 信息
-Validator.localize(Dictionary);
+Validator.localize(Dictionary)
 ```
 
 
@@ -138,14 +206,10 @@ Validator.localize(Dictionary);
 ···
 
 ```js
-Validator.extend('phone', {
-  messages: {
-    zh_CN:field => field + '必须是11位手机号码',
-  },
-  validate: value => {
-    return value.length == 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(value)
-  }
-});
+Validator.extend('mobile', {
+    getMessage: () => '请输入正确的固话或者手机号码',
+    validate: value => checkTel(value)	// checkTel（）是具体的验证方法
+  })
 ```
 
 

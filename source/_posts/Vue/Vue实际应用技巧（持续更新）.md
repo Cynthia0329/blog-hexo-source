@@ -97,7 +97,9 @@ vue无法监听localstorage的变化。localstorage主要用于不同页面间�
 
 
 
+## 路由相关
 
+[*vue 监听路由变化*](https://www.baidu.com/link?url=CHPkW9IIYSIo9NttQ5q8JbuMeBKzx0yOeKDzDZHZIPvvBLvVs5evKothRlckXc0zhiM6oyrZihyMHn6mVKDrXK&wd=&eqid=9f682ced00031977000000065ceca628)
 
 
 

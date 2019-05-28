@@ -200,7 +200,23 @@ export function download(book, onSucess, onError, onProgress) {
 
 ## 封装实例
 
+- [ ] *利用node环境变量来作判断请求地址的前缀*
+- [ ] *使用create方法创建axios实例*
+  - [ ] 请求超时时间
+  - [ ] 前缀
+  - [ ] 默认请求方法
+  - [ ] header
+  - [ ] 是否携带cookie
+- [ ] 请求拦截器
+  - [ ] 判断是否存在token
+- [ ] 响应拦截器
+  - [ ] 判断响应的状态码（设置统一的事件，如果有的话 ）
+  - [ ] 请求失败：弹出响应的对话框（统一处理）
 
 
 
 
+
+**具体的api方法**
+
+- [ ] 
