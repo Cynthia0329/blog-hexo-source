@@ -155,7 +155,8 @@ HTML DOM 事件允许Javascript在HTML文档元素中注册不同事件处理程
 
 > 内容如果过多，就整理成新的文章
 
-
+- [javaScript事件（二）事件处理程序](https://www.cnblogs.com/starof/p/4067121.html)
+- 
 
 
 
