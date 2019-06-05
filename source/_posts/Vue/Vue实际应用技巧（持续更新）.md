@@ -66,6 +66,30 @@ date: 2019-05-05 14:43:30
 
 
 
+
+
+## DOM相关
+
+[关于vue 的 this.$refs 打印为undefined解决办法](https://blog.csdn.net/changzhen11/article/details/84067816)
+
+```js
+如果写在method中，那么可以使用 this.$nextTick(() => {}) 等页面渲染好再调用
+```
+
+
+
+## 表单相关
+
+[Vue.js 表单 实例](https://www.runoob.com/vue2/vue-forms.html)
+
+- [vuejs使用FormData对象，ajax上传图片文件](https://www.cnblogs.com/yesyes/p/7299500.html)
+
+
+
+
+
+
+
 ## 数据相关
 
 ### vuex结合localStorage
@@ -92,6 +116,47 @@ vue无法监听localstorage的变化。localstorage主要用于不同页面间�
 3.永久性：当刷新页面时vuex存储的值会丢失，localstorage不会。
 
 注：很多同学觉得用localstorage可以代替vuex, 对于不变的数据确实可以，但是当两个组件共用一个数据源（对象或数组）时，如果其中一个组件改变了该数据源，希望另一个组件响应该变化时，localstorage无法做到，原因就是区别1。
+
+
+
+## 过滤器
+
+### 全局过滤器和本地过滤器
+
+[官方文档](https://cn.vuejs.org/v2/guide/filters.html)
+
+```js
+// 全局
+Vue.filter('filterName', function (value) {
+    // 数据处理
+    return ....
+})
+
+// 本地
+filters: {
+    filterName: function (value) {
+        // 数据处理
+   		return ....
+    }
+}
+```
+
+
+
+
+
+### 格式化时间
+
+利用插件[Moment.js](http://momentjs.cn/)
+
+```js
+filters: {
+    formDate: function(val) {
+        if (!val) return ''
+        return moment(val, 'YYYYMMDD').format('YYYY-MM-DD')
+    },
+},
+```
 
 
 

@@ -632,6 +632,10 @@ window.onload = function(){
 
 
 
+### e.target与e.currentTarget理解
+
+<https://www.jianshu.com/p/1dd668ccc97a>
+
 
 
 ### 总结

@@ -12,6 +12,8 @@ date: 2019-05-12 15:44:09
 ...
 <!--more-->
 
+菜鸟教程：<https://www.runoob.com/cssref/css-reference.html#flexbox>
+
 ## flex属性计算详解
 
 ```scss
