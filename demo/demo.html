@@ -6,33 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DEMO</title>
   <style>
-    .main {
-      width: 200px;
-      height: 200px;
+    .container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-column-gap: 10px;
+      height: 100px;
+    }
+    .left {
       background-color: pink;
+    }
+    .right {
+      background-color: lightblue;
     }
   </style>
 </head>
 <body>
-  <div class="main" id="main">
-    <p>你好啊</p>
-    <a href="https://www.baidu.com" target="_blanck">百度</a>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="left"></div>
+    <div class="right"></div>
   </div>
 
   <script>
     window.onload = function() {
       console.log('开始啦')
-      document.getElementById('main').onclick = function(e) {
-        console.log('你点击了')
-      if (e.target.nodeName.toLowerCase() === 'a') {
-          e.preventDefault()
-        }
-        setTimeout(()=> {
-          console.log('触发点击事件')
-          e.stopPropagation()
-        }, 500)
-        
-      }
     }
   </script>
 </body>
