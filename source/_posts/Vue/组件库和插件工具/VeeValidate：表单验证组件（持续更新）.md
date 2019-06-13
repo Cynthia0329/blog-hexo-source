@@ -254,6 +254,18 @@ Validator.extend('mobile', {
 
 
 
+#### data-vv-validate-on
+
+规定具体的输入项在哪些事件上验证
+
+```html
+<input name="field" v-validate="'required'" data-vv-validate-on="change|blur">
+```
+
+
+
+
+
 #### 一进入就验证
 
 > 比如我们想达到：一开始进入的时候按钮是不可点的的效果
@@ -330,6 +342,16 @@ v-validate="'required|min:3|alpha'"
 ```
 
 
+
+### 失去焦点和改变时验证
+
+> [Validation Events](https://baianat.github.io/vee-validate/guide/events.html#changing-default-events)
+
+```js
+Vue.use(VeeValidate, {
+  events: 'change|blur'
+});
+```
 
 
 

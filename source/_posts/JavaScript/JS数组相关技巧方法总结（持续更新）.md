@@ -21,6 +21,61 @@ date: 2019-05-16 13:10:54
 
 
 
+## 未分类
+
+- 利用 `apply` 将二维数组转换为一维数组
+
+  ```js
+  const c = [[1, 2, 3], [4, 5, 6]]
+  
+  // apply 会将传入的数组转换为参数传入
+  const newArray = [].concat.apply([], c)
+  console.log(newArray)   // [1, 2, 3, 4, 5, 6]
+  ```
+
+- 将树状的数组转换为一维数组 
+
+  ```js
+  export function flatten(array) {
+    return [].concat(...array.map(item => [].concat(item, ...flatten(item.subitems))))
+  }
+  
+  // 将上面的代码结构化
+  function flatten(array) {
+      const newArray = array.map( item => {
+          return [].concat(item, ...flatten(item.subitems))
+      })
+      return [].concat(...newArray)
+  }
+  ```
+
+- `filter()` 结合 `indexOf()` ：从一个数组中过滤另一个数组
+
+  ```js
+  // 原理：indexOf() 方法可返回数组中某个指定的元素位置。如果在数组中没找到指定元素则返回 -1。
+  // 过滤Array1中与Array2相等的部分
+  
+  NewArray = Array1.filter(item =>  Array2.indexOf(item) < 0)
+  ```
+
+
+
+## 具体方法运用
+
+### Array.prototype.reduce()
+
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+
+相关文章：
+
+  [Javascript中数组方法reduce的妙用之处](https://segmentfault.com/a/1190000019423048)
+
+
+
+
+
+
+
 ## 数组去重
 
 ### ES6

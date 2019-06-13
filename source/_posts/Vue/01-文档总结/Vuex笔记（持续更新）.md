@@ -710,6 +710,17 @@ Vuex 交互原理图：
 
 **Actions**：通过异步的方式调用Mutations
 
+
+
+**调用方式：**
+
+- **States：** `store.state.xxx`
+- **Mutations：** `store.commit('xxx')`
+- **Actions：** `store.dispatch('xxx')` 
+- **Getter：** `store.getters.xxx`
+
+
+
 ## 基本用法
 
 - main.js 文件

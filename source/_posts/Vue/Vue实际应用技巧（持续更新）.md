@@ -36,6 +36,11 @@ date: 2019-05-05 14:43:30
 
 ## css样式相关
 
+### 未分类
+
+- 可以**利用 vue的 `computed()` 计算属性** 来给 `:style:"计算属性名字"` 内联样式动态绑定一个css对象方法
+  - 因为计算属性得到的是 一个方法返回的值 可以在这个方法中根据不同的情况返回不同的值，达到动态绑定的效果
+
 ### 深度选择器
 
 > 当子组件使用了scope，但在父组件中又想修改子组件的样式时，可以使用深度选择器 `>>>` 来实现
@@ -63,6 +68,18 @@ date: 2019-05-05 14:43:30
   xxxx
 }
 ```
+
+
+
+## 动画相关
+
+- **一个dom中同时显示和隐藏 存在两个动画**
+  - 参考 `Popup.vue` 组件中的处理方式：利用 `setTimeout() ` 来使两个动画都能得以实现
+- **transition-group** 
+  - 与 `<transition>` 的不同：`<transition-group>` 会给里面遍历的每一个item都添加一个class动画类
+  - [api文档](https://cn.vuejs.org/v2/api/#transition-group)
+  - [列表过渡教程](https://cn.vuejs.org/v2/guide/transitions.html#%E5%88%97%E8%A1%A8%E8%BF%87%E6%B8%A1)
+  - 具体应用案例：[ebook书架](https://github.com/Cynthia0329/ebook/blob/master/src/components/shelf/ShelfList.vue)
 
 
 
@@ -119,6 +136,12 @@ vue无法监听localstorage的变化。localstorage主要用于不同页面间�
 
 
 
+## 指令相关
+
+- `@keyup.enter.exact="search()" ` ：此处的 exact 表示只有按了 enter 键才会触发事件（不能组合按键）
+
+
+
 ## 过滤器
 
 ### 全局过滤器和本地过滤器
@@ -155,6 +178,65 @@ filters: {
         if (!val) return ''
         return moment(val, 'YYYYMMDD').format('YYYY-MM-DD')
     },
+},
+```
+
+
+
+## 组件相关
+
+### 未分类
+
+- **vue公共组件：使用 `插槽` 的标签来达到组件复用** [插槽](https://cn.vuejs.org/v2/guide/components-slots.html)
+
+- **`:is` 点击不同的标签切换组件**
+
+  ```html
+  <component :is="tab"></component>
+  <script>
+      data() {
+          return {
+              tab: 传入已注册组件的名字	// 可以点击标签修改tab的值达到切换组件
+          }
+      }
+  </script>
+  
+  
+  如果只有两个标签
+  <component :is="currentTab === 1 ? content : bookmark"></component>
+  
+  <script>
+  data() {
+      return {
+          currentTab: 1,
+          content: EbookSlideContents,
+          bookmark: EbookSlideBookmark
+      }
+  }
+  </script>
+  ```
+
+
+
+### 刷新当前组件
+
+> 这个方法相比 `this.$router.go(0)` 而言不会出现白屏，用户体验比较好
+
+html
+
+```html
+<router-view v-if="isRouterAlive" />
+```
+
+method
+
+```js
+// 刷新当前页面
+reloadPage() {
+    this.isRouterAlive = false
+    this.$nextTick(function () {
+        this.isRouterAlive = true
+    })
 },
 ```
 
