@@ -136,6 +136,14 @@ var tt  = [...new Set([5,5,6,6,8,])] // 5，6，8
 
 ### ES5
 
+es5的 `filter()`
+
+```js
+[1, 3, 4, 5, 1, 2, 3, 3, 4, 8, 90, 3, 0, 5, 4, 0].filter(function (elem, index, Array) {
+  return index === Array.indexOf(elem);
+})
+```
+
 
 
 

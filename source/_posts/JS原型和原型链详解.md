@@ -133,10 +133,21 @@ var person2 = new Person('Mick', 23, 'Doctor');
 
 
 
+> 在默认情况下，所有的原型对象都会自动获得一个 constructor（构造函数）属性，这个属性（是一个指针）指向 prototype 属性所在的函数
+
+
+
+
+
+
+
+
+
 ## 原型对象
 
 在 JavaScript 中，每当定义一个对象（函数也是对象）时候，对象中都会包含一些预定义的属性。
-其中每个函数对象都有一个 `prototype` 属性，这个属性指向函数的原型对象。
+
+> 其中每个函数对象都有一个 `prototype` 属性，这个属性相当于一个指针，指向**他本身**的原型对象，这个原型对象里包含着**自定义的方法属性**
 
 ```js
 function Person() {}
@@ -238,6 +249,8 @@ console.log(a.__proto__ === a.constructor.prototype); //false（此处即为图1
 > 大部分时候，`_proto_` 指向构造器的原型
 >
 > 即： `_proto_` === `constructor.prototype`
+>
+> 每个对象的 `__proto__` 只会指向它的构造函数的 `prototype` 对象，`Object.__proto__` 除外，它指向 `null`。
 
 
 
@@ -259,6 +272,92 @@ console.log(a.__proto__ === a.constructor.prototype); //false（此处即为图1
 - Function.prototype === Function.\_proto_
 - Function.prototype 是函数，其他所有prototype 都是对象
 - Function.prototype函数没有prototype （Function.prototype.prototype === undefined），其他函数都有prototype
+
+
+
+### 原型的原型
+
+- `构造函数.prototype` 也是对象啊，它指向谁？
+- 既然是对象，那么里面就有 `__proto__` 属性
+
+```js
+Person.prototype.__proto__ === ???
+```
+
+问号填什么呢，原型是由谁构造的呢，我们想到了所有对象的根----------`Object`
+
+在控制台验证如下
+
+```js
+Person.prototype.__proto__ === Object.prototype
+true
+Array.prototype.__proto__ === Object.prototype
+true
+String.prototype.__proto__ === Object.prototype
+true
+```
+
+
+
+既然引出了Object，我们来看一下所有对象的祖宗的原型吧
+
+```js
+Object.prototype.__proto__ === null
+true
+```
+
+
+
+![](https://raw.githubusercontent.com/Cynthia0329/images/master/img/20190614131602.png)
+
+
+
+
+
+
+
+### **特殊的Function**
+
+前面我们看到了Function构造方法构造除了所有的函数，包括普通的构造函数。
+
+那么他自身也是一个函数，所以也是由Function构造函数构造的。所以由总结的公式可以知道
+
+```text
+Function.__proto__ === Function.prototype
+```
+
+
+
+而且，**下面这个很重要，易错**
+
+```text
+Function.prototype === Object.__proto__ //哈哈，这个老别扭了吧，还给你倒过来写，很容易错的
+```
+
+解释：Object也是构造函数啊，属于对象。Object构造函数也是由Function把它构造出来的，所以是结果是`true`
+
+
+  ![](https://raw.githubusercontent.com/Cynthia0329/images/master/img/20190614131723.png)
+
+
+
+
+
+### 总结
+
+- 当你new一个构造函数的时候，创建一个函数实例，那么 『 `函数实例.__proto__ === 该构造函数.prototype`』
+- 所有的函数都是由`Function`构造出来的，那么 『`被构造出来的其他函数.__proto__ === Function.prototype`』
+- 所有的构造函数的原型对象都是由Object构造出来的，那么 『`所有的构造函数.prototype.__proto__ === Object.prototype`』
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -293,6 +392,106 @@ JavaScript对象是动态的属性“包”（指其自己的属性）。JavaScr
 
 
 
+**MDN 的定义**
+
+> 每个实例对象（ object ）都有一个私有属性（称之为 `__proto__` ）指向它的构造函数的原型对象（`prototype` ）。
+> 该原型对象也有一个自己的原型对象( `__proto__` ) ，层层向上直到一个对象的原型对象为 `null`。
+> 根据定义，`null` 没有原型，并作为这个原型链中的最后一个环节
+
+
+
+
+
+## instanceof 运算符本质
+
+首先这有几个题
+
+```text
+Object instanceof Function
+Function instanceof Object
+Function instanceof Function
+Object instanceof Object
+```
+
+- 能不假思索的说出来吗，大声告诉我，答案是什么。
+- 没错，全是`true`
+
+虽然 `instanceof`运算符算是我们的老朋友了，不过背后是咋判断的呢
+
+规范是这么写的
+
+> object instanceof constructor
+
+**参数：**
+
+- `object`
+
+要检测的对象.
+
+- `constructor`
+
+某个构造函数
+
+`instanceof`运算符用来检测 `constructor.prototype`是否存在于参数 `object`的原型链上
+
+
+
+- 对于 **Object instanceof Function** ，`Object.__proto__ === Function.prototype` 为`true`，解决
+- 对于 **Function instanceof Object** ， `Function.__proto__.__proto__ === Function.prototype.__proto__ === Object.prototype`为`true`，解决。
+- 对于 **Function instanceof Function** ，`Function.__proto__ === Function.prototype` 为`true`，解决
+- 对于 **Object instanceof Object** , `Object.__proto__.__proto__ === Function.prototype.__proto__ === Object.prototype` 为`true`，解决
+
+
+
+在上面的各种原型的变换中，其实难点就在于
+
+- `Function`
+
+-  `Object` 
+
+- `构造函数也是对象`
+
+- `原型对象等所有对象都由Object构造`
+
+这四个点。
+
+
+
+## 面试题
+
+### instanceof 的实现原理
+
+如果 `left instanceof right` ，那么会沿着 `left` 的原型链一直往上找，如果找到 `right.prototype`，就 return true，否则就 return false。说白了就是一个链表的的遍历。
+
+（检测left是否出现在right的原型链中）
+
+
+
+### 原型的作用？
+
+- 用来理解对象上属性访问的过程
+- 用来判断对象实例是否由某个函数创建
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 总结
 
 
@@ -315,6 +514,20 @@ JavaScript对象是动态的属性“包”（指其自己的属性）。JavaScr
 
 
 
+![](https://raw.githubusercontent.com/Cynthia0329/images/master/img/20190614113930.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 几句话能解释一切关于原型方面的问题
 
 - 当 new 一个函数的时候会创建一个对象，『函数.prototype』 等于 『被创建对象.**proto**』
@@ -326,7 +539,9 @@ JavaScript对象是动态的属性“包”（指其自己的属性）。JavaScr
 
 
 
-
+1. 每个对象（包括函数）都有 `__proto__` , 但 `null` 没有。
+2. 每个对象的 `__proto__` 只会指向它的构造函数的 `prototype` 对象，`Object.__proto__` 除外，它指向 `null`。
+3. 构造函数的 `prototype` 对象的 `constructor` 属性指回构造函数。
 
 
 
@@ -345,3 +560,7 @@ JavaScript对象是动态的属性“包”（指其自己的属性）。JavaScr
 ><https://segmentfault.com/a/1190000017816152>
 >
 ><https://segmentfault.com/a/1190000018308979>
+>
+><https://zhuanlan.zhihu.com/p/32887069>
+>
+><https://www.liuyiqi.cn/2019/06/01/js-prototype/>

@@ -242,6 +242,20 @@ reloadPage() {
 
 
 
+### vue组件之间通信的方式
+
+#### props和$emit
+
+父组件向子组件传递数据是通过prop传递的，子组件传递数据给父组件是通过$emit触发事件来做到的
+
+
+
+八种方式：<https://blog.csdn.net/lyr190/article/details/88355949>
+
+
+
+
+
 
 
 ## 路由相关

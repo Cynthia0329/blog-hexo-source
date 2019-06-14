@@ -169,7 +169,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // 通过判断元字段requiresAuth的布尔值, 来判断访问该页面是否需要验证
   if (to.matched.some(record => record.meta.requiresAuth)) { // 该页面需要验证
-    if (!auth.loggedIn()) {	// 没有登陆=>跳转到登录页面
+    if (!auth.loggedIn()) {	// 没有登录=>跳转到登录页面
       next({
         path: '/login',
         query: { redirect: to.fullPath }
@@ -185,7 +185,7 @@ router.beforeEach((to, from, next) => {
 
 
 
-- 用法：登陆验证
+- 用法：登录验证
   - https://blog.csdn.net/cofecode/article/details/79181894>
   - https://www.jb51.net/article/143056.htm>
 

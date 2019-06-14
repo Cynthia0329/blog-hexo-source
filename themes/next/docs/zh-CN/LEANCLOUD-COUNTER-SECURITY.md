@@ -5,7 +5,7 @@
 ---
 
 # 注册Leancloud并创建应用
-- 首先，前往Leancloud官网[leancloud.cn](leancloud.cn)进行注册，并登陆。
+- 首先，前往Leancloud官网[leancloud.cn](leancloud.cn)进行注册，并登录。
 - 然后点击图示`1`处，进入控制台：
 
   ![1](https://lc-cqha0xyi.cn-n1.lcfile.com/fc0c048a1e25dc3d10aa.jpg)
@@ -68,7 +68,7 @@ leancloud_visitors:
       return query.get(request.object.id).then(function (obj) {
           if (obj.get("time") > request.object.get("time")) {
               throw new AV.Cloud.Error('Invalid update!');
-          } 
+          }
           return request.object.save();
       });
   }
