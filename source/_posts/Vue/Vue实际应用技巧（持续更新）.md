@@ -109,6 +109,68 @@ date: 2019-05-05 14:43:30
 
 ## 数据相关
 
+### 未分类
+
+
+
+### 修改对象或数组中的键，视图未发生变化
+
+#### $set()
+
+使用 `$set` 方法修改 [官方文档详情](https://cn.vuejs.org/v2/api/#Vue-set)
+
+```html
+<script>
+  export default{
+    data() {
+      return {
+        item: {
+          title: '222'
+        },
+        options: [11, 22],
+        list: [
+          {
+            title: '2222'
+          }
+        ]
+      }
+    },
+    created() {
+      /* 对于对象，第一个为要修改的对象，第二个参数为对象的键，第三个为要修改的键对应的值 */
+      this.$set(this.item, 'title', '2200');
+      /* 对于对象，第一个为要修改的数组，第二个参数为数组索引，第三个为要修改的索引对应的值 */
+      this.$set(this.options, 0, 33);
+      /* 对于数组里包含对象，可以利用循环对其进行修改 */
+      this.list.forEach(item => {
+        this.$set(item, '_disableExpand', true);
+      });
+      /* 对于数组里包含对象，也可以利用Object.assign对其进行修改 */
+      this.list[0] = Object.assign({}, this.list[0], { num: 10 });
+      this.$set(this.list, 0, this.list[0]);
+    },
+  }
+</script>
+```
+
+
+
+#### $forceUpdata()
+
+> 也可以直接进行修改后对页面进行强制刷新，使用 `$forceUpdate()` 方法
+>
+> 迫使 Vue 实例重新渲染。注意它仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。
+
+```js
+this.options[0] = 100;
+this.$forceUpdate();
+```
+
+
+
+
+
+
+
 ### vuex结合localStorage
 
 > 合理运用vuex结合localstorage动态监听storage的变化
@@ -133,6 +195,10 @@ vue无法监听localstorage的变化。localstorage主要用于不同页面间�
 3.永久性：当刷新页面时vuex存储的值会丢失，localstorage不会。
 
 注：很多同学觉得用localstorage可以代替vuex, 对于不变的数据确实可以，但是当两个组件共用一个数据源（对象或数组）时，如果其中一个组件改变了该数据源，希望另一个组件响应该变化时，localstorage无法做到，原因就是区别1。
+
+
+
+
 
 
 
