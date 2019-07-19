@@ -1,36 +1,21 @@
-<HTML>  
-  <HEAD>  
-  <TITLE>WMI Scripting HTML</TITLE>  
-  </HEAD>  
-  <BODY>  
-  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
-  <script> 
-      window.onload = function() {
-            const pageMap = [{ id: 900, name: '首页', path: '/ratings' },
-                  { id: 1001, name: '中证再评级结果', path: '/rating/twiceRating' },
-                  { id: 1005, name: '中证再评级周报', path: '/rating/weekly' },
-                  { id: 1008, name: '中证隐含违约率', path: '/rating/implied-default-rate' },
-                  { id: 1011, name: '中证评级信用曲线', path: '/rating/credit-curve' },
-                  { id: 1013, name: '中证市场隐含评级', path: '/rating/implied-ratings' },
-                  { id: 1015, name: '市场监测报告', path: '/rating/market-performance' },
-                  { id: 1018, name: '理论研究', path: '/rating/research' },
-                  { id: 1021, name: '评级观察', path: '/rating/comments' },
-                  { id: 1024, name: '评级方法', path: '/rating/methodologies' },
-                  { id: 1027, name: '质量检验', path: '/rating/quality-reports' },
-                  { id: 1030, name: '中证评级简介', path: '/rating/introduction' },
-                  { id: 1031, name: '合规管理', path: '/rating/disclosures' },
-                  { id: 1037, name: '联系我们', path: '/rating/about-csi-rating' },
-                  { id: 1040, name: '注册', path: '/rating/register' },
-                  { id: 1041, name: '修改密码', path: '/rating/modify' },
-                  { id: 1042, name: '忘记密码', path: '/rating/forget' },
-                 ]
- 
-            console.log('ok')
-            console.log(pageMap.find(item => {
-                  return item.path === '/about-csi-rating'
-            }).id)
-      }
-
-  </script>
-  </BODY>  
-  </HTML>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <style>
+            .test {
+                  width:174px;
+height:56px;
+background:rgba(0,104,183,1);
+box-shadow:0px 3px 8px 0px rgba(0, 0, 0, 0.3);
+border-radius:8px;
+            }
+      </style>
+</head>
+<body>
+      <div class="test"></div>
+</body>
+</html>
