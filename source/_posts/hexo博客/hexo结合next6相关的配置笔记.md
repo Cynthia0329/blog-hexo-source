@@ -2,7 +2,7 @@
 title: hexo结合next6相关的配置笔记
 author: Cynthia
 categories:
-  - hexo博客
+  - Hexo博客
 date: 2019-04-25 13:36:14
 tags:
 ---

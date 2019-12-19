@@ -2,7 +2,7 @@
 title: hexo相关的实用插件
 author: Cynthia
 categories:
-  - hexo博客
+  - Hexo博客
 tags: []
 date: 2019-04-26 14:37:34
 ---

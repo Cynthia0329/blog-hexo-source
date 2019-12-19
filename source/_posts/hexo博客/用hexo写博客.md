@@ -2,7 +2,7 @@
 title: 用hexo写博客：相关标签和美化
 author: Cynthia
 categories:
-  - hexo博客
+  - Hexo博客
 date: 2019-04-25 13:41:11
 tags:
 ---
@@ -53,7 +53,7 @@ tags:
 
 ### 引用站内文章
 
-{% post_link 【记录和总结】/2019-04 Cynthia-的四月记录 %}
+{% post_link Hexo博客/hexo相关的实用插件 %}
 
 ```scss
 
@@ -62,6 +62,69 @@ tags:
 // 比如上面的示例
 {% post_link 【记录和总结】/2019-04 Cynthia-的四月记录 %}
 ```
+
+
+
+### 代码块红绿底色
+
+```diff
+/**
+ * +为红色，-为绿色，设置为diff语言即可
+*/
+package l2f.gameserver.model;
+
++public abstract class L2Char extends L2Object {
+-  public static final Short ERROR = 0x0001;
+  public void moveTo(int x, int y, int z) {
+    _ai = null;
+    log("Should not be called");
+    if (1 > 5) { // wtf!?
+      return;
+    }
+  }
+}
+```
+
+
+
+### note标签样式
+
+```html
+<div class="note default"><p>default</p></div>
+```
+<div class="note default"><p>default</p></div>
+
+
+<br>
+```html
+<div class="note default"><p>default</p></div>
+```
+<div class="note primary"><p>primary</p></div>
+
+<br>
+```html
+<div class="note default"><p>default</p></div>
+```
+<div class="note success"><p>success</p></div>
+
+<br>
+```html
+<div class="note default"><p>default</p></div>
+```
+<div class="note info"><p>info</p></div>
+
+<br>
+```html
+<div class="note default"><p>default</p></div>
+```
+<div class="note warning"><p>warning</p></div>
+
+<br>
+```html
+<div class="note default"><p>default</p></div>
+```
+<div class="note danger"><p>danger</p></div>
+
 
 
 
@@ -127,5 +190,4 @@ tags:
   - 主题自带的note样式标签
   - 主题自带的label标签样式
   - 使用tabs标签样式（选项卡）
-  - 代码块红绿底色
   - 插入音乐和视频
