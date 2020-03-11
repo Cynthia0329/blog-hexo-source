@@ -99,6 +99,8 @@ handleScroll() {
 
 ## 方法封装
 
+
+
 - 可以给封装的方法的形参中添加一个回调函数，以达到多种不同情况的额外应用
 
   ```js
@@ -116,6 +118,44 @@ handleScroll() {
       // 这里放额外需要在这个方法中另外调用的函数方法
   })
   ```
+
+
+
+
+
+### 过滤器：格式化
+
+```js
+// 表格单元格参数的格式化
+    Vue.filter('FAT', function (val) {
+      if (val == '--') {  // 空值
+        return val
+      } 
+      else if (isNumber(val)) { // 数字：四舍五入保留两位数，并添加千位分割符
+        let num = parseFloat(val)
+        num = lodash.round(num, 2)  // 四舍五入保留两位
+        num = num.toLocaleString()  // 千位分割符
+        // 补小数点后的0
+        let s = num.toString()  
+        let rs = s.indexOf('.')    
+        if (rs < 0) {    
+            rs = s.length;    
+            s += '.';    
+        }    
+        while (s.length <= rs + 2) {    
+            s += '0';    
+        } 
+        return s
+      }
+      else {  // 其他
+        return val
+      }
+    })
+```
+
+
+
+
 
 
 
